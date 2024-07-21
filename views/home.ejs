@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Head content -->
+</head>
+<body>
+    <%- include("nav.ejs") %> <!-- Assuming nav.ejs includes your navigation markup -->
+    <h1>Welcome to the Blog of the Block!</h1>
+    <% for(post of postArray) { %>
+        <h2><%= post.title %></h2>
+        <p><%= post.body %></p>
+        <hr>
+    <% } %>
+</body>
+</html>
