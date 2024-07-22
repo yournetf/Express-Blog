@@ -7,6 +7,7 @@ var logger = require('morgan');
 //Creates a reference to our route files.
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
+var postRouter = require('./routes/read');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/read', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

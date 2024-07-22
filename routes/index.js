@@ -1,6 +1,8 @@
+const { error } = require('console');
 var express = require('express');
 var router = express.Router();
 var fs = require("fs");
+var { v4 } = require('uuid');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,15 +34,20 @@ function writePostDB(posts){
 router.post("/post/submit", (req, res)=>{
   const title = req.body.title;
   const body  = req.body.body;
+  let id = v4();
+
 
   let postDB = readPostDB();
 
   postDB.push({
+    id: id,
     title: title,
-    body: body
+    body: body, 
+    timePosted: new Date().toLocaleString()
   });
 
   writePostDB(postDB);
   res.redirect("/home");
 });
+
 module.exports = router;
